@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  background-color: #202020;
+  color: #ffffff;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: #26313C;
+  width: 250px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Company Logo */
+.company-logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.company-logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* User Profile */
+.user-profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.user-profile .user-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-profile h3 {
+  color: #ffffff;
+  font-size: 18px;
+}
+
+/* Menu */
+.menu button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  background-color: #3E4A55;
+  color: #ffffff;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.menu button:hover {
+  background-color: #556677;
+}
+
+.logout-btn {
+  background-color: #E74C3C;
+  padding: 12px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #C0392B;
+}
+
+/* Main Content */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.main-content h2 {
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.jobs-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #2C3E50;
+}
+
+.jobs-table th, .jobs-table td {
+  padding: 15px;
+  border: 1px solid #34495E;
+  text-align: center;
+  color: #ffffff;
+}
+
+.jobs-table th {
+  background-color: #1ABC9C;
+  color: white;
+}
+
+.jobs-table td input[type="text"] {
+  width: 100%;
+  padding: 5px;
+  border: none;
+  background-color: #34495E;
+  color: white;
+  text-align: center;
+}
+
+.jobs-table td input[type="checkbox"] {
+  transform: scale(1.5);
+  cursor: pointer;
+}
+
+.jobs-table .notes {
+  text-align: left;
+}
