@@ -13,6 +13,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile -t zag-frontend:$(date +%s) -t zag-frontend:latest
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub or GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}  # Set your Docker Hub username as a secret
+          password: ${{ secrets.DOCKER_PASSWORD }}  # Set your Docker Hub password or GitHub PAT
+
+      - name: Build the Docker image
+        run: |
+          docker build . --file Dockerfile -t ghcr.io/zag-prj/zag-frontend:$(date +%s) -t ghcr.io/zag-prj/zag-frontend:latest
+
+      - name: Push the Docker image
+        run: |
+          docker push ghcr.io/zag-prj/zag-frontend:$(date +%s)  # Pushing the timestamped tag
+          docker push ghcr.io/zag-prj/zag-frontend:latest        # Pushing the latest tag
