@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="./stylesheets/ContractManagment.css">
+    <link href="./stylesheets/navbar.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <!-- include nav.ejs-->
+    <%- include('layout/nav.ejs') %>
+
+        <main class="contract-management">
+            <h1>Contract Management</h1>
+
+            <div class="contract-card">
+                <h2>Premium Service Package</h2>
+                <p><strong>Expiry Date:</strong> January 1, 2025</p>
+                <div class="action-buttons">
+                    <button type="button" class="view-btn">View Details</button>
+                    <button type="button" class="renew-btn">Renew Contract</button>
+                </div>
+            </div>
+
+            <div class="contract-card">
+                <h2>Basic Maintenance Package</h2>
+                <p><strong>Expiry Date:</strong> July 15, 2024</p>
+                <div class="action-buttons">
+                    <button type="button" class="view-btn">View Details</button>
+                    <button type="button" class="renew-btn">Renew Contract</button>
+                </div>
+            </div>
+        </main>
+
+</body>
+
+</html>
