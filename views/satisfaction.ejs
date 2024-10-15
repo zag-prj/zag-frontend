@@ -1,67 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <%= title %>
-    </title>
-    <link rel="stylesheet" href="./stylesheets/satisffaction.css">
-    <link href="./stylesheets/navbar.css" rel="stylesheet" />
-</head>
+<%- include("layout/haed.ejs") %>
 
 <body>
-    <!-- include nav.ejs-->
-    <%- include('layout/nav.ejs') %>
+  <!-- include nav.ejs-->
+  <%- include('layout/nav.ejs') %>
 
+  <section class="customer-satisfaction">
+    <h1>Customer Satisfaction Management</h1>
+    <div class="feedback-form">
+      <h2>Feedback Survey</h2>
+      <p><strong>Service Completed:</strong> HVAC Repair</p>
+      <form>
+        <label for="serviceRating">How would you rate our service?</label>
+        <select id="serviceRating">
+          <option value="5">5 - Excellent</option>
+          <option value="4">4 - Good</option>
+          <option value="3">3 - Average</option>
+          <option value="2">2 - Below Average</option>
+          <option value="1">1 - Poor</option>
+        </select>
 
-        <section class="customer-satisfaction">
-            <h1>Customer Satisfaction Management</h1>
-            <div class="feedback-form">
-                <h2>Feedback Survey</h2>
-                <p><strong>Service Completed:</strong> HVAC Repair</p>
-                <form>
-                    <label for="serviceRating">How would you rate our service?</label>
-                    <select id="serviceRating">
-                        <option value="5">5 - Excellent</option>
-                        <option value="4">4 - Good</option>
-                        <option value="3">3 - Average</option>
-                        <option value="2">2 - Below Average</option>
-                        <option value="1">1 - Poor</option>
-                    </select>
+        <label for="feedbackComments">Additional Comments</label>
+        <textarea id="feedbackComments"
+          placeholder="Share your thoughts..."></textarea>
 
-                    <label for="feedbackComments">Additional Comments</label>
-                    <textarea id="feedbackComments" placeholder="Share your thoughts..."></textarea>
+        <button type="submit" class="submit-feedback">Submit Feedback</button>
+      </form>
+    </div>
 
-                    <button type="submit" class="submit-feedback">Submit Feedback</button>
-                </form>
-            </div>
+    <div class="complaint-tracking">
+      <h2>Complaint Tracking</h2>
+      <form>
+        <label for="complaintDescription">Log a Complaint</label>
+        <textarea id="complaintDescription"
+          placeholder="Describe the issue..."></textarea>
 
+        <button type="submit" class="log-complaint-btn">Log Complaint</button>
+      </form>
 
-            <div class="complaint-tracking">
-                <h2>Complaint Tracking</h2>
-                <form>
-                    <label for="complaintDescription">Log a Complaint</label>
-                    <textarea id="complaintDescription" placeholder="Describe the issue..."></textarea>
+      <h3>Previous Complaints</h3>
+      <ul class="complaint-list">
+        <li>
+          <p><strong>Issue:</strong> Delayed Technician Response</p>
+          <p><strong>Status:</strong> Resolved on 09/25/2024</p>
+        </li>
+        <li>
+          <p><strong>Issue:</strong> Incorrect Billing</p>
+          <p><strong>Status:</strong> Pending Resolution</p>
+        </li>
+      </ul>
+    </div>
 
-                    <button type="submit" class="log-complaint-btn">Log Complaint</button>
-                </form>
-
-                <h3>Previous Complaints</h3>
-                <ul class="complaint-list">
-                    <li>
-                        <p><strong>Issue:</strong> Delayed Technician Response</p>
-                        <p><strong>Status:</strong> Resolved on 09/25/2024</p>
-                    </li>
-                    <li>
-                        <p><strong>Issue:</strong> Incorrect Billing</p>
-                        <p><strong>Status:</strong> Pending Resolution</p>
-                    </li>
-                </ul>
-            </div>
-
-        </section>
+  </section>
 
 </body>
 

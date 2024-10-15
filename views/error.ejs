@@ -1,41 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>
-    <%= title %>
-  </title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-  <link href="./stylesheets/navbar.css" rel="stylesheet" />
-
-</head>
+<%- include("layout/head.ejs") %>
 
 <body>
   <!-- Include nav.ejs -->
-  <%- include('layout/nav.ejs') %>
+  <%- include("layout/nav.ejs") %>
 
-    <div class="container">
-      <h1>Error: <%= message || 'Something went wrong!' %>
-      </h1>
+  <div class="container">
+    <h1>Error: <%= message || 'Something went wrong!' %></h1>
 
-      <!-- Display the error status -->
-      <% if (error.status) { %>
-        <h2>Status Code: <%= error.status %>
-        </h2>
-        <% } %>
+    <!-- Display the error status -->
+    <% if (error.status) { %>
+    <h2>Status Code: <%= error.status %></h2>
+    <% } %>
 
-          <!-- For development mode, show the stack trace -->
-          <% if (process.env.NODE_ENV==='development' ) { %>
-            <pre><%= error.stack %></pre>
-            <% } else { %>
-              <p>Sorry, an unexpected error occurred. Please try again later.</p>
-              <% } %>
+    <!-- For development mode, show the stack trace -->
+    <% if (process.env.NODE_ENV === 'development') { %>
+    <pre><%= error.stack %></pre>
+    <% } else { %>
+    <p>Sorry, an unexpected error occurred. Please try again later.</p>
+    <% } %>
 
-                <a href="/">Go back to Home</a>
-    </div>
-
+    <a href="/">Go back to Home</a>
+  </div>
 </body>
 
 </html>
