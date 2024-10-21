@@ -46,9 +46,9 @@ body {
 }
 
 .auth-card label {
-  display: block; /* Makes labels take full width */
-  margin: 10px 0; /* Adds spacing above and below labels */
-  text-align: center; /* Aligns text to the left */
+  display: block;
+  margin: 10px 0; 
+  text-align: center; 
 }
 
 .auth-card input {
