@@ -7,6 +7,9 @@
 var app = require('../app');
 var debug = require('debug')('node:server');
 var http = require('http');
+var https = require('https');
+var fs = require('fs');
+var path = require('path');
 
 /**
  * Get port from environment and store in Express.
@@ -18,11 +21,37 @@ require('dotenv').config();
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
+
+
+/**
+ * Check if SSL certificate files exist.
+ */
+
+var sslOptions = {};
+var sslEnabled = false;
+
+try {
+  console.log("Checking if SSL key files exist");
+  sslOptions.key = fs.readFileSync(path.join(__dirname, '..', 'ssl', 'localhost-key.pem'));
+  console.log("Ok\nChecking if SSL certificate files exist");
+  sslOptions.cert = fs.readFileSync(path.join(__dirname, '..', 'ssl', 'localhost.pem'));
+  console.log('Ok\nSSL Certificate files exist. HTTPS is enabled');
+  sslEnabled = true;
+} catch (error) {
+  console.warn('SSL certificate files not found. HTTPS will not be enabled.');
+  console.warn('Consider applying Certificate for a secure connection');
+}
+
+
 /**
  * Create HTTP server.
  */
-
-var server = http.createServer(app);
+if (sslEnabled) {
+  var server = https.createServer(sslOptions, app);
+}
+else {
+  var server = http.createServer(app);
+}
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -34,6 +63,9 @@ server.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
+ *
+ * @param {string|number} val - The value to normalize.
+ * @returns {string|number|boolean} - The normalized port.
  */
 
 function normalizePort(val) {
@@ -54,6 +86,8 @@ function normalizePort(val) {
 
 /**
  * Event listener for HTTP server "error" event.
+ *
+ * @param {Error} error - The error object.
  */
 
 function onError(error) {
@@ -90,7 +124,8 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
-  
 
-  console.log(`server is running at http://localhost:${port}`);
+  // Show protocol based on SSL availability
+  const protocol = sslEnabled ? 'https' : 'http';
+  console.log(`Server is running at ${protocol}://localhost:${port}`);
 }
