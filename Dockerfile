@@ -16,6 +16,9 @@ COPY . .
 # Set a default port
 ENV PORT=3000
 
+# Set a backend server
+ENV API_BASE_URL=http://localhost:8080
+
 # Expose the port that your application runs on
 EXPOSE $PORT
 

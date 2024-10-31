@@ -5,6 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 //Define routes
+var apiRouter = require("./routes/api");
 var indexRouter = require("./routes/index");
 var contractmanagRouter = require("./routes/contractmanag");
 var feedbackRouter = require("./routes/feedback");
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Direct to routes
 app.use("/", indexRouter);
+app.use("/api", apiRouter);
 app.use("/contractmanag", contractmanagRouter);
 app.use("/feedback", feedbackRouter);
 app.use("/login", loginRouter);
