@@ -12,7 +12,11 @@ var express = require('express');
 var router = express.Router();
 require('dotenv').config();
 
-const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:8080';
+const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost';
+const ASP_PORT = process.env.ASP_PORT || 8080;
+const API_BASE = API_BASE_URL + ':' + ASP_PORT;
+
+console.log('Connecting to API ' + API_BASE);
 
 /**
  * Handles POST requests to create a new client.
@@ -30,7 +34,7 @@ router.post('/client',
         const { companyName, address, billing, password } = req.body;
         try {
             const response = await axios.post(
-                `${API_BASE_URL}/api/client`,
+                `${API_BASE}/api/client`,
                 {
                     companyName,
                     address,
@@ -62,7 +66,7 @@ router.get('/client/:id',
     async (req, res) => {
         try {
             const response = await axios.get(
-                `${API_BASE_URL}/api/client/${req.params.id}`
+                `${API_BASE}/api/client/${req.params.id}`
             );
             res.status(response.status).json(response.data);
         } catch (error) {
@@ -93,7 +97,7 @@ router.post('/contact',
         const { clientId, name, surname, phoneNumber, email } = req.body;
         try {
             const response = await axios.post(
-                `${API_BASE_URL}/api/contact`,
+                `${API_BASE}/api/contact`,
                 {
                     clientId,
                     name,
@@ -126,7 +130,7 @@ router.get('/contact/:id',
     async (req, res) => {
         try {
             const response = await axios.get(
-                `${API_BASE_URL}/api/contact/${req.params.id}`
+                `${API_BASE}/api/contact/${req.params.id}`
             );
             res.status(response.status).json(response.data);
         } catch (error) {
@@ -155,7 +159,7 @@ router.post('/contract',
         const { clientId, until, priceMonthly } = req.body;
         try {
             const response = await axios.post(
-                `${API_BASE_URL}/api/contract`,
+                `${API_BASE}/api/contract`,
                 {
                     clientId,
                     until,
@@ -186,7 +190,7 @@ router.get('/contract/:id',
     async (req, res) => {
         try {
             const response = await axios.get(
-                `${API_BASE_URL}/api/contract/${req.params.id}`
+                `${API_BASE}/api/contract/${req.params.id}`
             );
             res.status(response.status).json(response.data);
         } catch (error) {
@@ -215,7 +219,7 @@ router.post('/hardware',
         const { contractId, refName, value } = req.body;
         try {
             const response = await axios.post(
-                `${API_BASE_URL}/api/hardware`,
+                `${API_BASE}/api/hardware`,
                 {
                     contractId,
                     refName,
@@ -246,7 +250,7 @@ router.get('/hardware/:id',
     async (req, res) => {
         try {
             const response = await axios.get(
-                `${API_BASE_URL}/api/hardware/${req.params.id}`
+                `${API_BASE}/api/hardware/${req.params.id}`
             );
             res.status(response.status).json(response.data);
         } catch (error) {
@@ -274,7 +278,7 @@ router.post('/hardware/spec',
         const { refName, value } = req.body;
         try {
             const response = await axios.post(
-                `${API_BASE_URL}/api/hardware/spec`,
+                `${API_BASE}/api/hardware/spec`,
                 {
                     refName,
                     value
@@ -304,7 +308,7 @@ router.get('/hardware/spec/:id',
     async (req, res) => {
         try {
             const response = await axios.get(
-                `${API_BASE_URL}/api/hardware/spec/${req.params.id}`
+                `${API_BASE}/api/hardware/spec/${req.params.id}`
             );
             res.status(response.status).json(response.data);
         } catch (error) {
@@ -333,7 +337,7 @@ router.post('/hardware/info',
         const { hardwareId, specId, count } = req.body;
         try {
             const response = await axios.post(
-                `${API_BASE_URL}/api/hardware/info`,
+                `${API_BASE}/api/hardware/info`,
                 {
                     hardwareId,
                     specId,
@@ -365,7 +369,7 @@ router.get('/hardware/info/:hardwareId/:specId',
     async (req, res) => {
         try {
             const response = await axios.get(
-                `${API_BASE_URL}/api/hardware/info/${req.params.hardwareId}/${req.params.specId}`
+                `${API_BASE}/api/hardware/info/${req.params.hardwareId}/${req.params.specId}`
             );
             res.status(response.status).json(response.data);
         } catch (error) {
@@ -393,7 +397,7 @@ router.post('/job',
         const { clientId, technicianId } = req.body;
         try {
             const response = await axios.post(
-                `${API_BASE_URL}/api/job`,
+                `${API_BASE}/api/job`,
                 {
                     clientId,
                     technicianId
@@ -424,7 +428,7 @@ router.get('/job/:clientId/:technicianId',
     async (req, res) => {
         try {
             const response = await axios.get(
-                `${API_BASE_URL}/api/job/${req.params.clientId}/${req.params.technicianId}`
+                `${API_BASE}/api/job/${req.params.clientId}/${req.params.technicianId}`
             );
             res.status(response.status).json(response.data);
         } catch (error) {
@@ -454,7 +458,7 @@ router.post('/technician',
         const { role, name, surname, salary } = req.body;
         try {
             const response = await axios.post(
-                `${API_BASE_URL}/api/technician`,
+                `${API_BASE}/api/technician`,
                 {
                     role,
                     name,
@@ -486,7 +490,7 @@ router.get('/technician/:id',
     async (req, res) => {
         try {
             const response = await axios.get(
-                `${API_BASE_URL}/api/technician/${req.params.id}`
+                `${API_BASE}/api/technician/${req.params.id}`
             );
             res.status(response.status).json(response.data);
         } catch (error) {
