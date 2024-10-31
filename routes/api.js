@@ -9,8 +9,8 @@
  */
 const axios = require('axios');
 var express = require('express');
-var router = express.router();
-require('dotnet').config();
+var router = express.Router();
+require('dotenv').config();
 
 const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:8080';
 
