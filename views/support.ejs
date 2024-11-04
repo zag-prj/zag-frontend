@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("layout/head.ejs") %>
+<link rel="stylesheet" href="/css/support.css">
+<body>
+  <!-- include nav.ejs-->
+  <%- include('layout/nav.ejs') %>
+
+    <div class="container">
+      <h1>Support</h1>
+      <p>If you need assistance, please fill out the form below, and our support
+        team will get back to you as soon as
+        possible.</p>
+
+      <form class="support-form">
+        <div class="form-group">
+          <label for="issue-type">Select Issue Type:</label>
+          <select id="issue-type" name="issue-type" required>
+            <option value disabled selected>Select an issue</option>
+            <option value="technical">Technical Issue</option>
+            <option value="billing">Billing Inquiry</option>
+            <option value="service-request">Service Request</option>
+            <option value="general">General Inquiry</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Describe Your Issue:</label>
+          <textarea id="description" name="description" rows="4"
+            placeholder="Please describe your issue..."
+            required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Your Name:</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Your Email:</label>
+          <input type="email" id="email" name="email"
+            placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Your Phone Number:</label>
+          <input type="tel" id="phone" name="phone"
+            placeholder="Enter your phone number" required>
+        </div>
+
+        <button type="submit">Submit Support Request</button>
+      </form>
+
+      <div class="contact-info">
+        <h2>Or Talk to Us Directly</h2>
+        <p>If you prefer to speak with someone directly, feel free to reach out
+          to us:</p>
+        <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+        <p><strong>Email:</strong> support@apexcare.com</p>
+        <p><strong>Office Hours:</strong> Mon-Fri, 9 AM - 5 PM</p>
+      </div>
+    </div>
+  </body>
+
+</html>
