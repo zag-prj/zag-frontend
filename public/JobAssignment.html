@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Assignment</title>
+    <link rel="stylesheet" href="css\Job.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="company-logo">
+                <img src="images\v13_3317.png" alt="Company Logo">
+            </div>
+
+            <!-- User Profile -->
+            <div class="user-profile">
+                <img src="images\v13_3315.png" alt="User Icon" class="user-icon">
+                <h3>User</h3>
+            </div>
+
+            <!-- Menu Buttons -->
+            <nav class="menu">
+                <button>Main</button>
+                <button>Task Assignment</button>
+                <button>Current Clients</button>
+                <button>Maintenance Schedule</button>
+                <button>Service Request</button>
+                <button>Scheduled Jobs</button>
+            </nav>
+
+            <!-- Log out Button -->
+            <button class="logout-btn">Log out</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="task-assignment">
+                <h2>Technicians Assignment</h2>
+
+                <!-- Task Description -->
+                <div class="form-group">
+                    <label for="task-description">Task Description</label>
+                    <input type="text" id="task-description" placeholder="Enter task description">
+                </div>
+
+                <!-- Assign Technician -->
+                <div class="form-group">
+                    <label for="assign-technician">Assign Technician</label>
+                    <select id="assign-technician">
+                        <option>AI Recommends Jane Doe</option>
+                        <option>AI Recommends Bob the Builder</option>
+                    </select>
+                </div>
+
+                <!-- Due Date -->
+                <div class="form-group">
+                    <label for="due-date">Due Date</label>
+                    <input type="date" id="due-date">
+                </div>
+
+                <!-- Priority Level -->
+                <div class="form-group">
+                    <label for="priority-level">Priority Level</label>
+                    <select id="priority-level">
+                        <option>Low</option>
+                        <option>Medium</option>
+                        <option>High</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="task-assigned">
+                <h2>Tasks Assigned</h2>
+                <table class="tasks-assigned-table">
+                    <thead>
+                        <tr>
+                            <th>Task ID</th>
+                            <th>Technician</th>
+                            <th>Due</th>
+                            <th>Task Description</th>
+                            <th>Status</th>
+                            <th>Priority</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example Row -->
+                        <tr>
+                            <td>001</td>
+                            <td>John Doe</td>
+                            <td>2024-10-13</td>
+                            <td>Repair Work</td>
+                            <td>In Progress</td>
+                            <td>Low</td>
+                        </tr>
+                        <tr>
+                            <td>002</td>
+                            <td>BnB's</td>
+                            <td>2024-10-14</td>
+                            <td>Plumbing</td>
+                            <td>In Progress</td>
+                            <td>Medium</td>
+                        </tr>
+                        <!-- More rows can be added here -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
