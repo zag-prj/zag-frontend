@@ -8,10 +8,10 @@
   <%- include('layout/nav.ejs') %>
   <div class="container">
     <h1>Customer Feedback</h1>
-    <form class="feedback-form">
+    <form class="feedback-form" action="/feedback" method="POST">
       <div class="form-group">
         <label for="service-rating">Rate Your Experience:</label>
-        <select id="service-rating" name="service-rating" required>
+        <select id="service-rating" name="serviceRating" required>
           <option value disabled selected>Select a rating</option>
           <option value="5">5 - Excellent</option>
           <option value="4">4 - Good</option>
@@ -43,6 +43,8 @@
       <button type="submit">Submit Feedback</button>
     </form>
   </div>
+
+  <script src="/js/feedback.js"></script>
 </body>
 
 </html>

@@ -9,71 +9,34 @@
   <div class="container">
     <h1>Current Services</h1>
     <div class="current-services">
-      <div class="service-card">
-        <h2>Current Request #005</h2>
-        <p><strong>Date:</strong> October 5, 2024</p>
-        <p><strong>Service Type:</strong> Emergency Repair</p>
-        <p><strong>Status:</strong> In Progress</p>
-        <p><strong>Technician:</strong> Emily White</p>
-        <p><strong>Location:</strong> Client Site - Building A</p>
-        <p><strong>Tracking Status:</strong> Technician is en route, estimated
-          arrival in 15 minutes.</p>
-      </div>
-
-      <div class="service-card">
-        <h2>Current Request #006</h2>
-        <p><strong>Date:</strong> October 8, 2024</p>
-        <p><strong>Service Type:</strong> Routine Maintenance</p>
-        <p><strong>Status:</strong> Scheduled</p>
-        <p><strong>Technician:</strong> Mark Taylor</p>
-        <p><strong>Location:</strong> Client Site - Building B</p>
-        <p><strong>Tracking Status:</strong> Scheduled for tomorrow at 10
-          AM.</p>
-      </div>
+      <% currentServices.forEach(service => { %>
+        <div class="service-card">
+          <h2>Current Request #<%= service.id %></h2>
+          <p><strong>Date:</strong> <%= service.date %></p>
+          <p><strong>Service Type:</strong> <%= service.serviceType %></p>
+          <p><strong>Status:</strong> <%= service.status %></p>
+          <p><strong>Technician:</strong> <%= service.technician %></p>
+          <p><strong>Location:</strong> <%= service.location %></p>
+          <p><strong>Tracking Status:</strong> <%= service.trackingStatus %></p>
+        </div>
+      <% }) %>
     </div>
-
+    
     <h1>Service History</h1>
     <div class="service-history">
-      <div class="service-card">
-        <h2>Service Request #001</h2>
-        <p><strong>Date:</strong> July 15, 2024</p>
-        <p><strong>Service Type:</strong> Equipment Repair</p>
-        <p><strong>Status:</strong> Completed</p>
-        <p><strong>Technician:</strong> John Doe</p>
-        <p><strong>Notes:</strong> Replaced the faulty motor and tested the
-          equipment.</p>
-      </div>
-
-      <div class="service-card">
-        <h2>Service Request #002</h2>
-        <p><strong>Date:</strong> August 10, 2024</p>
-        <p><strong>Service Type:</strong> Preventative Maintenance</p>
-        <p><strong>Status:</strong> Completed</p>
-        <p><strong>Technician:</strong> Jane Smith</p>
-        <p><strong>Notes:</strong> Regular maintenance completed; no issues
-          found.</p>
-      </div>
-
-      <div class="service-card">
-        <h2>Service Request #003</h2>
-        <p><strong>Date:</strong> September 5, 2024</p>
-        <p><strong>Service Type:</strong> Equipment Installation</p>
-        <p><strong>Status:</strong> Completed</p>
-        <p><strong>Technician:</strong> Alan Brown</p>
-        <p><strong>Notes:</strong> Successfully installed new equipment;
-          training provided.</p>
-      </div>
-
-      <div class="service-card">
-        <h2>Service Request #004</h2>
-        <p><strong>Date:</strong> October 1, 2024</p>
-        <p><strong>Service Type:</strong> Repair</p>
-        <p><strong>Status:</strong> Pending</p>
-        <p><strong>Technician:</strong> Assigned</p>
-        <p><strong>Notes:</strong> Awaiting parts for repair.</p>
-      </div>
-    </div>
+      <% serviceHistory.forEach(service => { %>
+        <div class="service-card">
+          <h2>Service Request #<%= service.id %></h2>
+          <p><strong>Date:</strong> <%= service.date %></p>
+          <p><strong>Service Type:</strong> <%= service.serviceType %></p>
+          <p><strong>Status:</strong> <%= service.status %></p>
+          <p><strong>Technician:</strong> <%= service.technician %></p>
+          <p><strong>Notes:</strong> <%= service.notes %></p>
+        </div>
+      <% }) %>
+    </div>    
   </div>
+  <script src="/js/servicehistory.js"></script>
 </body>
 
 </html>
