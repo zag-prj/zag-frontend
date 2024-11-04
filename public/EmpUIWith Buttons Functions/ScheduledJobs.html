@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scheduled Jobs</title>
+    <link rel="stylesheet" href="css\Jobs.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Company Logo -->
+            <div class="company-logo">
+                <img src="images\v25_2235.png" alt="Company Logo">
+            </div>
+
+            <!-- User Profile -->
+            <div class="user-profile">
+                <img src="images\v25_2233.png" alt="User Icon" class="user-icon">
+                <h3>User</h3>
+            </div>
+
+            <!-- navigate -->
+            <script>
+                function navigateTo(page) {
+                    window.location.href = page;
+                }
+            </script>
+            <!-- Sidebar buttons -->
+            <div class="menu">
+                <button class="menu-btn" onclick="navigateTo('MainEmp.html')">Main</button>
+                <button class="menu-btn" onclick="navigateTo('JobAssignment.html')">Task Assignment</button>
+                <button class="menu-btn" onclick="navigateTo('CurrentClients.html')">Current Clients</button>
+                <button class="menu-btn" onclick="navigateTo('MaintenanceSched.html')">Maintenance Schedule</button>
+                <button class="menu-btn" onclick="navigateTo('ServiceReq.html')">Service Request</button>
+                <button class="menu-btn" onclick="navigateTo('ScheduledJobs.html')">Scheduled Jobs</button>
+    
+
+            <!-- Log out Button -->
+            <button class="logout-btn">Log out</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h2>Scheduled Jobs</h2>
+            <table class="scheduled-jobs-table">
+                <thead>
+                    <tr>
+                        <th>Service ID</th>
+                        <th>Client</th>
+                        <th>Service Type</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Notes</th>
+                        <th>Complete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example row -->
+                    <tr>
+                        <td><input type="text" value="12345"></td>
+                        <td><input type="text" value="John Doe"></td>
+                        <td><input type="text" value="Plumbing"></td>
+                        <td><input type="text" value="10:00 AM"></td>
+                        <td><input type="text" value="Pen
