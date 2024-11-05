@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="css\Service.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <!-- include sidebar.ejs-->
+        <%- include('layout/sidebar.ejs') %>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <h2>Today's Scheduled Maintenance</h2>
+                <div class="scheduled-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Service ID</th>
+                                <th>Client</th>
+                                <th>Service Type</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Repeat this row structure for each entry -->
+                            <tr>
+                                <td><input type="text" placeholder="Service ID"></td>
+                                <td><input type="text" placeholder="Client"></td>
+                                <td><input type="text" placeholder="Service Type"></td>
+                                <td><input type="text" placeholder="Time"></td>
+                                <td><input type="text" placeholder="Status"></td>
+                                <td>
+                                    <button class="approve-btn">Approve</button>
+                                    <button class="reject-btn">Reject</button>
+                                </td>
+                            </tr>
+                            <!-- More rows can be added as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    </div>
+</body>
+
+</html>
