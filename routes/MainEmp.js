@@ -4,7 +4,11 @@ var path = require("path"); // Import the path module
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("MainEmp", { title: "Dashboard" });
+  res.render("MainEmp", {
+    title: "Dashboard", user: {
+      name: 'John Doe',
+    }
+  });
 });
 
 module.exports = router;
