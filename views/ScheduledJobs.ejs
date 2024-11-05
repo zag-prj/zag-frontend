@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scheduled Jobs</title>
+    <link rel="stylesheet" href="css\Jobs.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <!-- include sidebar.ejs-->
+        <%- include('layout/sidebar.ejs') %>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <h2>Scheduled Jobs</h2>
+                <table class="scheduled-jobs-table">
+                    <thead>
+                        <tr>
+                            <th>Service ID</th>
+                            <th>Client</th>
+                            <th>Service Type</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                            <th>Notes</th>
+                            <th>Complete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example row -->
+                        <tr>
+                            <td><input type="text" value="12345"></td>
+                            <td><input type="text" value="John Doe"></td>
+                            <td><input type="text" value="Plumbing"></td>
+                            <td><input type="text" value="10:00 AM"></td>
+                            <td><input type="text" value="Pen
