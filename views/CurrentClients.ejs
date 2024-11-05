@@ -34,12 +34,12 @@
                         <!-- Example row -->
                         <% for(let i=0; i < 5; i++) { %> <!-- Adjust the number as needed -->
                             <tr>
-                                <td><input type="text" class="table-input" placeholder="Client ID"></td>
-                                <td><input type="text" class="table-input" placeholder="Name"></td>
-                                <td><input type="text" class="table-input" placeholder="Contact"></td>
-                                <td><input type="text" class="table-input" placeholder="Email"></td>
-                                <td><input type="text" class="table-input" placeholder="Status"></td>
-                                <td><input type="text" class="table-input" placeholder="Notes"></td>
+                                <td><input type="text" class="table-input" placeholder="Client ID"><%= user.Id %></td>
+                                <td><input type="text" class="table-input" placeholder="Name"><%= user.CompanyName %></td>
+                                <td><input type="text" class="table-input" placeholder="Contact"><%= user.CompanyName %></td>
+                                <td><input type="text" class="table-input" placeholder="Email"><%= user.CompanyName %></td>
+                                <td><input type="text" class="table-input" placeholder="Status"><%= user.CompanyName %></td>
+                                <td><input type="text" class="table-input" placeholder="Notes"><%= user.CompanyName %></td>
                             </tr>
                             <% } %>
                     </tbody>

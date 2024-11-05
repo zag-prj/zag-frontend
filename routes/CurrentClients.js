@@ -2,10 +2,16 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function (req, res, next) {
+  async function Clients(params) {
+
+    const response = await axios.get(
+      `/api/client/${req.params.id}`
+  );
+  return response.data;
+    
+  }
   res.render('CurrentClients', {
-    title: 'Current Clients', user: {
-      name: 'John Doe',
-    }
+    title: 'Current Clients', user: Clients()
   });
 });
 
