@@ -13,36 +13,8 @@
 <body>
     <div class="container">
         <!-- Sidebar -->
-        <aside class="sidebar">
-            <!-- Company Logo -->
-            <div class="company-logo">
-                <img src="images/v25_2235.png" alt="Company Logo">
-            </div>
-
-            <!-- User Profile -->
-            <div class="user-profile">
-                <img src="images/v25_2233.png" alt="User Icon" class="user-icon">
-                <h3>User</h3>
-            </div>
-
-            <!-- navigate -->
-            <script>
-                function navigateTo(page) {
-                    window.location.href = page;
-                }
-            </script>
-            <!-- Sidebar buttons -->
-            <div class="menu">
-                <button class="menu-btn" onclick="navigateTo('MainEmp.html')">Main</button>
-                <button class="menu-btn" onclick="navigateTo('JobAssignment.html')">Task Assignment</button>
-                <button class="menu-btn" onclick="navigateTo('CurrentClients.html')">Current Clients</button>
-                <button class="menu-btn" onclick="navigateTo('MaintenanceSched.html')">Maintenance Schedule</button>
-                <button class="menu-btn" onclick="navigateTo('ServiceReq.html')">Service Request</button>
-                <button class="menu-btn" onclick="navigateTo('ScheduledJobs.html')">Scheduled Jobs</button>
-            </div>
-            <!-- Log out Button -->
-            <button class="logout-btn" onclick="navigateTo('routes/login.ejs')">Log out</button>
-        </aside>
+        <!-- include sidebar.ejs-->
+        <%- include('layout/sidebar.ejs') %>
 
         <!-- Main Content -->
         <div class="main-content">
