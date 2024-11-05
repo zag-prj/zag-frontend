@@ -6,37 +6,49 @@
 <body>
   <!-- include nav.ejs-->
   <%- include('layout/nav.ejs') %>
+  
   <div class="container">
-    <h1>Current Services</h1>
+    <h1><%= title %></h1> <!-- Display the page title -->
+    
+    <h2>Current Services</h2>
     <div class="current-services">
-      <% currentServices.forEach(service => { %>
-        <div class="service-card">
-          <h2>Current Request #<%= service.id %></h2>
-          <p><strong>Date:</strong> <%= service.date %></p>
-          <p><strong>Service Type:</strong> <%= service.serviceType %></p>
-          <p><strong>Status:</strong> <%= service.status %></p>
-          <p><strong>Technician:</strong> <%= service.technician %></p>
-          <p><strong>Location:</strong> <%= service.location %></p>
-          <p><strong>Tracking Status:</strong> <%= service.trackingStatus %></p>
-        </div>
-      <% }) %>
+      <% if (currentServices.length === 0) { %>
+        <p>No current services available.</p>
+      <% } else { %>
+        <% currentServices.forEach(service => { %>
+          <div class="service-card">
+            <h3>Current Request #<%= service.id %></h3>
+            <p><strong>Date:</strong> <%= new Date(service.date).toLocaleDateString() %></p>
+            <p><strong>Service Type:</strong> <%= service.serviceType %></p>
+            <p><strong>Status:</strong> <%= service.status %></p>
+            <p><strong>Technician:</strong> <%= service.technician %></p>
+            <p><strong>Location:</strong> <%= service.location %></p>
+            <p><strong>Tracking Status:</strong> <%= service.trackingStatus %></p>
+          </div>
+        <% }) %>
+      <% } %>
     </div>
     
-    <h1>Service History</h1>
+    <h2>Service History</h2>
     <div class="service-history">
-      <% serviceHistory.forEach(service => { %>
-        <div class="service-card">
-          <h2>Service Request #<%= service.id %></h2>
-          <p><strong>Date:</strong> <%= service.date %></p>
-          <p><strong>Service Type:</strong> <%= service.serviceType %></p>
-          <p><strong>Status:</strong> <%= service.status %></p>
-          <p><strong>Technician:</strong> <%= service.technician %></p>
-          <p><strong>Notes:</strong> <%= service.notes %></p>
-        </div>
-      <% }) %>
+      <% if (serviceHistory.length === 0) { %>
+        <p>No service history available.</p>
+      <% } else { %>
+        <% serviceHistory.forEach(service => { %>
+          <div class="service-card">
+            <h3>Service Request #<%= service.id %></h3>
+            <p><strong>Date:</strong> <%= new Date(service.date).toLocaleDateString() %></p>
+            <p><strong>Service Type:</strong> <%= service.serviceType %></p>
+            <p><strong>Status:</strong> <%= service.status %></p>
+            <p><strong>Technician:</strong> <%= service.technician %></p>
+            <p><strong>Notes:</strong> <%= service.notes %></p>
+          </div>
+        <% }) %>
+      <% } %>
     </div>    
   </div>
-  <script src="/js/servicehistory.js"></script>
+  
+  <script src="js/servicehistory.js"></script>
 </body>
 
 </html>

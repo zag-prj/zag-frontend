@@ -503,4 +503,46 @@ router.get('/technician/:id',
         }
     }
 );
+router.get('/services', async (req, res) => {
+    const pg = new Postgress();
+    const currentServices = [];
+    const serviceHistory = [];
+
+    try {
+        // Fetch current services
+        const currentServicesReader = await pg.ExecuteQueryAsync(SqlQueries.GetMaintenanceJob, new NpgsqlParameter("@state", "In Progress"));
+        while (await currentServicesReader.ReadAsync()) {
+            currentServices.push({
+                id: currentServicesReader.GetInt32(0),
+                date: currentServicesReader.GetDateTime(1),
+                serviceType: currentServicesReader.GetString(2),
+                status: currentServicesReader.GetString(3),
+                technician: currentServicesReader.GetString(4),
+                location: currentServicesReader.GetString(5),
+                trackingStatus: currentServicesReader.GetString(6)
+            });
+        }
+
+        // Fetch service history
+        const serviceHistoryReader = await pg.ExecuteQueryAsync(SqlQueries.GetMaintenanceJob, new NpgsqlParameter("@state", "Completed"));
+        while (await serviceHistoryReader.ReadAsync()) {
+            serviceHistory.push({
+                id: serviceHistoryReader.GetInt32(0),
+                date: serviceHistoryReader.GetDateTime(1),
+                serviceType: serviceHistoryReader.GetString(2),
+                status: serviceHistoryReader.GetString(3),
+                technician: serviceHistoryReader.GetString(4),
+                notes: serviceHistoryReader.GetString(5)
+            });
+        }
+
+        // Send response
+        res.json({ currentServices, serviceHistory });
+    } catch (error) {
+        console.error('Error fetching service data:', error);
+        res.status(500).json({ error: 'Error fetching service data' });
+    } finally {
+        pg.Dispose(); // Ensure connection is closed
+    }
+});
 module.exports = router;
