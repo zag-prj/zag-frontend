@@ -1,0 +1,31 @@
+
+<aside class="sidebar">
+    <!-- Company Logo -->
+    <div class="company-logo">
+        <img src="images/v25_2235.png" alt="Company Logo">
+    </div>
+
+    <!-- User Profile -->
+    <div class="user-profile">
+        <img src="images/v25_2233.png" alt="User Icon" class="user-icon">
+        <h3><%= user.CompanyName %></h3>
+    </div>
+
+    <!-- navigate -->
+    <script>
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+    </script>
+    <!-- Sidebar buttons -->
+    <div class="menu">
+        <button class="menu-btn" onclick="navigateTo('MainEmp')">Main</button>
+        <button class="menu-btn" onclick="navigateTo('JobAssignment')">Task Assignment</button>
+        <button class="menu-btn" onclick="navigateTo('CurrentClients')">Current Clients</button>
+        <button class="menu-btn" onclick="navigateTo('MaintenanceSched')">Maintenance Schedule</button>
+        <button class="menu-btn" onclick="navigateTo('ServiceReq')">Service Request</button>
+        <button class="menu-btn" onclick="navigateTo('ScheduledJobs')">Scheduled Jobs</button>
+    </div>
+    <!-- Log out Button -->
+    <button class="logout-btn" onclick="navigateTo('login')">Log out</button>
+</aside>

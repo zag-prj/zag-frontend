@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="css/Clients.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <!-- include sidebar.ejs-->
+        <%- include('layout/sidebar.ejs') %>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <h2>Current Clients</h2>
+                <table class="current-clients-table">
+                    <thead>
+                        <tr>
+                            <th>Client ID</th>
+                            <th>Name</th>
+                            <th>Contact</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example row -->
+                        <% for(let i=0; i < 5; i++) { %> <!-- Adjust the number as needed -->
+                            <tr>
+                                <td><input type="text" class="table-input" placeholder="Client ID"><%= user.Id %></td>
+                                <td><input type="text" class="table-input" placeholder="Name"><%= user.CompanyName %></td>
+                                <td><input type="text" class="table-input" placeholder="Contact"><%= user.CompanyName %></td>
+                                <td><input type="text" class="table-input" placeholder="Email"><%= user.CompanyName %></td>
+                                <td><input type="text" class="table-input" placeholder="Status"><%= user.CompanyName %></td>
+                                <td><input type="text" class="table-input" placeholder="Notes"><%= user.CompanyName %></td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+
+    <script>
+        function logout() {
+            // Handle logout functionality here
+            alert('Logging out...');
+            // Redirect to login page or handle session termination
+            window.location.href = 'login.html'; // Example redirect
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="css/Job.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <!-- include sidebar.ejs-->
+        <%- include('layout/sidebar.ejs') %>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h2>Task Assignment</h2>
+            <table class="task-assignment-table">
+                <thead>
+                    <tr>
+                        <th>Task ID</th>
+                        <th>Assigned To</th>
+                        <th>Task Description</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let i=0; i < 5; i++) { %> <!-- Adjust the number as needed -->
+                        <tr>
+                            <td><input type="text" class="table-input" placeholder="Task ID"></td>
+                            <td><input type="text" class="table-input" placeholder="Assigned To"></td>
+                            <td><input type="text" class="table-input" placeholder="Task Description"></td>
+                            <td><input type="text" class="table-input" placeholder="Due Date"></td>
+                            <td><input type="text" class="table-input" placeholder="Status"></td>
+                            <td><input type="text" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            // Handle logout functionality here
+            alert('Logging out...');
+            // Redirect to login page or handle session termination
+            window.location.href = 'login.html'; // Example redirect
+        }
+    </script>
+</body>
+
+</html>

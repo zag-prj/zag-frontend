@@ -8,12 +8,18 @@ var logger = require("morgan");
 var apiRouter = require("./routes/api");
 var indexRouter = require("./routes/index");
 var contractmanagRouter = require("./routes/contractmanag");
+var CurrentClientsRouter = require("./routes/CurrentClients");
 var feedbackRouter = require("./routes/feedback");
+var JobAssignmentRouter = require("./routes/JobAssignment");
 var loginRouter = require("./routes/login");
+var MainEmpRouter = require("./routes/MainEmp");
+var MaintenanceSchedRouter = require("./routes/MaintenanceSched");
 var satisfactionRouter = require("./routes/satisfaction");
+var ScheduledJobsRouter = require("./routes/ScheduledJobs");
 var selfserviceRouter = require("./routes/selfservice");
 var serschedRouter = require("./routes/sersched");
 var servicehistoryRouter = require("./routes/servicehistory");
+var ServiceReqRouter = require("./routes/ServiceReq");
 var supportRouter = require("./routes/support");
 
 var app = express();
@@ -32,12 +38,18 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/api", apiRouter);
 app.use("/contractmanag", contractmanagRouter);
+app.use("/CurrentClients", CurrentClientsRouter);
 app.use("/feedback", feedbackRouter);
+app.use("/JobAssignment", JobAssignmentRouter);
 app.use("/login", loginRouter);
+app.use("/MainEmp", MainEmpRouter);
+app.use("/MaintenanceSched", MaintenanceSchedRouter);
 app.use("/satisfaction", satisfactionRouter);
+app.use("/ScheduledJobs", ScheduledJobsRouter);
 app.use("/selfservice", selfserviceRouter);
 app.use("/sersched", serschedRouter);
 app.use("/servicehistory", servicehistoryRouter);
+app.use("/ServiceReq", ServiceReqRouter);
 app.use("/support", supportRouter);
 
 // catch 404 and forward to error handler
