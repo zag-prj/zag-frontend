@@ -1,18 +1,27 @@
 var express = require('express');
 var router = express.Router();
 
+// Render the support page
 router.get('/', function(req, res, next) {
   res.render('support', { title: 'Support' });
 });
-router.post('/api/support', function(req, res) {
+
+// Handle support request submissions
+router.post('/api/support-request', async (req, res) => {
   const { issueType, description, name, email, phone } = req.body;
-  console.log('Support Request:', {
-    issueType,
-    description,
-    name,
-    email,
-    phone,
+
+  // Here, you would typically save the support request to a database
+  // For demonstration, we'll just log it and respond with a success message
+  console.log('Support request submitted:', {
+      issueType,
+      description,
+      name,
+      email,
+      phone,
   });
-  res.redirect('/support');
+
+  // Respond with a success message
+  res.json({ message: 'Support request submitted successfully!' });
 });
+
 module.exports = router;

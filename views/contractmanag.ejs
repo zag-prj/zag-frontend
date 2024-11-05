@@ -4,25 +4,16 @@
 <%- include("layout/head.ejs") %>
 <link rel="stylesheet" href="/css/ContractManagment.css">
 <body>
-  <!-- include nav.ejs-->
+  <!-- Include nav.ejs -->
   <%- include('layout/nav.ejs') %>
 
   <main class="contract-management">
-    <h1><%= title %></h1>
-
-    <% contracts.forEach(contract => { %>
-      <div class="contract-card">
-        <h2><%= contract.packageName %></h2>
-        <p><strong>Expiry Date:</strong> <%= contract.expiryDate.toLocaleDateString() %></p>
-        <div class="action-buttons">
-          <button type="button" class="view-btn" onclick="viewDetails('<%= contract.id %>')">View Details</button>
-          <form action="/contractmanag/renew/<%= contract.id %>" method="POST" style="display:inline;">
-            <button type="submit" class="renew-btn">Renew Contract</button>
-          </form>
-        </div>
-      </div>
-    <% }) %>
+    <h1>Contract Management</h1>
+    <div id="contract-list" class="contract-list">
+      <!-- Contracts will be injected here by contractmanag.js -->
+    </div>
   </main>
-</body>
 
+  <script src="js/contractmanag.js" defer></script>
+</body>
 </html>

@@ -1,29 +1,22 @@
 var express = require('express');
 var router = express.Router();
+const axios = require('axios'); // Make sure you have axios installed
 
-// GET route to render the contract management page
-router.get('/', async function(req, res, next) {
-  try {
-    const contracts = await Contract.find(); // Fetch contracts from the database
-    res.render('contractmanag', { 
-      title: 'Contract Management', 
-      contracts // Pass the contracts to the template
-    });
-  } catch (error) {
-    console.error('Error fetching contracts:', error);
-    res.status(500).send('Error retrieving contracts');
-  }
+// Route to render the contract management page
+router.get('/', function(req, res, next) {
+  res.render('contractmanag', { title: 'Contract Management' });
 });
 
-// POST route to renew a contract
-router.post('/renew/:id', async function(req, res) {
-  const contractId = req.params.id;
+// API route to get contracts for a specific client
+router.get('/api/contracts/:clientId', async function(req, res) {
+  const clientId = req.params.clientId;
+
   try {
-    await Contract.findByIdAndUpdate(contractId, { renewed: true }); // Update contract status
-    res.redirect('/contractmanag'); // Redirect to contract management page
+    const response = await axios.get(`${API_BASE}/api/contracts/${clientId}`);
+    res.json(response.data);
   } catch (error) {
-    console.error('Error renewing contract:', error);
-    res.status(500).send('Error renewing contract');
+    console.error(error);
+    res.status(500).json({ message: 'Error fetching contracts' });
   }
 });
 

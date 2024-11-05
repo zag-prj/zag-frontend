@@ -1,54 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <%- include("layout/head.ejs") %>
 <link rel="stylesheet" href="/css/servicehistory.css">
 <body>
-  <!-- include nav.ejs-->
+  <!-- Include nav.ejs -->
   <%- include('layout/nav.ejs') %>
-  
+
   <div class="container">
-    <h1><%= title %></h1> <!-- Display the page title -->
-    
-    <h2>Current Services</h2>
-    <div class="current-services">
-      <% if (currentServices.length === 0) { %>
-        <p>No current services available.</p>
-      <% } else { %>
-        <% currentServices.forEach(service => { %>
-          <div class="service-card">
-            <h3>Current Request #<%= service.id %></h3>
-            <p><strong>Date:</strong> <%= new Date(service.date).toLocaleDateString() %></p>
-            <p><strong>Service Type:</strong> <%= service.serviceType %></p>
-            <p><strong>Status:</strong> <%= service.status %></p>
-            <p><strong>Technician:</strong> <%= service.technician %></p>
-            <p><strong>Location:</strong> <%= service.location %></p>
-            <p><strong>Tracking Status:</strong> <%= service.trackingStatus %></p>
-          </div>
-        <% }) %>
-      <% } %>
+    <h1>Current Services</h1>
+    <div id="current-services" class="current-services">
+      <!-- Current requests will be injected here by servicehistory.js -->
     </div>
-    
-    <h2>Service History</h2>
-    <div class="service-history">
-      <% if (serviceHistory.length === 0) { %>
-        <p>No service history available.</p>
-      <% } else { %>
-        <% serviceHistory.forEach(service => { %>
-          <div class="service-card">
-            <h3>Service Request #<%= service.id %></h3>
-            <p><strong>Date:</strong> <%= new Date(service.date).toLocaleDateString() %></p>
-            <p><strong>Service Type:</strong> <%= service.serviceType %></p>
-            <p><strong>Status:</strong> <%= service.status %></p>
-            <p><strong>Technician:</strong> <%= service.technician %></p>
-            <p><strong>Notes:</strong> <%= service.notes %></p>
-          </div>
-        <% }) %>
-      <% } %>
-    </div>    
+
+    <h1>Service History</h1>
+    <div id="service-history" class="service-history">
+      <!-- Service entries will be injected here by servicehistory.js -->
+    </div>
   </div>
   
-  <script src="js/servicehistory.js"></script>
-</body>
+  <!-- <script src="js/servicehistory.js" defer></script> -->
 
+  <!-- Inline Script for Fetching and Displaying Data -->
+  <script>
+    async function fetchCurrentServices(clientId) {
+        try {
+            const response = await fetch(`/api/current-services/${clientId}`);
+            if (response.ok) {
+                const data = await response.json();
+                displayCurrentServices(data);
+            } else {
+                console.error('Failed to fetch current services:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error fetching current services:', error);
+        }
+    }
+
+    function displayCurrentServices(data) {
+        const container = document.getElementById('current-services');
+        container.innerHTML = ''; // Clear existing content
+
+        data.forEach(service => {
+            const serviceElement = document.createElement('div');
+            serviceElement.innerHTML = `
+                <p>Job ID: ${service.clientId}</p>
+                <p>Technician ID: ${service.technicianId}</p>
+                <p>State: ${service.state}</p>
+                <p>Requested: ${new Date(service.requested).toLocaleString()}</p>
+                <p>Started: ${service.started ? new Date(service.started).toLocaleString() : 'N/A'}</p>
+                <p>Completed: ${service.completed ? new Date(service.completed).toLocaleString() : 'N/A'}</p>
+                <hr>
+            `;
+            container.appendChild(serviceElement);
+        });
+    }
+
+    async function fetchServiceHistory(clientId) {
+        try {
+            const response = await fetch(`/api/service-history/${clientId}`);
+            if (response.ok) {
+                const data = await response.json();
+                displayServiceHistory(data);
+            } else {
+                console.error('Failed to fetch service history:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error fetching service history:', error);
+        }
+    }
+
+    function displayServiceHistory(data) {
+        const container = document.getElementById('service-history');
+        container.innerHTML = ''; // Clear existing content
+
+        data.forEach(job => {
+            const jobElement = document.createElement('div');
+            jobElement.innerHTML = `
+                <p>Job ID: ${job.clientId}</p>
+                <p>Technician ID: ${job.technicianId}</p>
+                <p>State: ${job.state}</p>
+                <p>Requested: ${new Date(job.requested).toLocaleString()}</p>
+                <p>Started: ${job.started ? new Date(job.started).toLocaleString() : 'N/A'}</p>
+                <p>Completed: ${job.completed ? new Date(job.completed).toLocaleString() : 'N/A'}</p>
+                <hr>
+            `;
+            container.appendChild(jobElement);
+        });
+    }
+
+    // Call fetch functions with the client ID from EJS
+    const clientId = '<%= clientId %>'; // Injected client ID from server-side rendering
+    fetchCurrentServices(clientId);
+    fetchServiceHistory(clientId);
+  </script>
+</body>
 </html>

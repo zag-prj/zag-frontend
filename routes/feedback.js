@@ -1,30 +1,26 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
-router.get('/', (req, res) => {
-  res.render('feedback', { title: 'Feedback' });
+// Render the feedback page
+router.get('/', function(req, res, next) {
+  res.render('feedback', { title: 'Customer Feedback' });
 });
 
-// POST route to submit feedback
-router.post('/', async function(req, res) {
-  try {
-    // Extract data from the form
-    const { serviceRating, comments, name, email } = req.body;
+// Handle feedback submissions
+router.post('/api/feedback', async (req, res) => {
+  const { serviceRating, comments, name, email } = req.body;
 
-    // Save the feedback to the database
-    await Feedback.create({
+  // Here, you would typically save the feedback to a database
+  // For demonstration, we'll just log it and respond with a success message
+  console.log('Feedback submitted:', {
       serviceRating,
       comments,
       name,
-      email
-    });
+      email,
+  });
 
-    // Send a response back to the client
-    res.status(200).send('Feedback submitted successfully');
-  } catch (error) {
-    console.error('Error saving feedback:', error);
-    res.status(500).send('Error submitting feedback');
-  }
+  // Respond with a success message
+  res.json({ message: 'Feedback submitted successfully!' });
 });
 
 module.exports = router;
