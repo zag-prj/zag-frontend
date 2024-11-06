@@ -7,21 +7,33 @@ router.get('/', function(req, res, next) {
 });
 
 // Handle support request submissions
-router.post('/api/support-request', async (req, res) => {
+router.post('/support', async (req, res) => {
   const { issueType, description, name, email, phone } = req.body;
 
-  // Here, you would typically save the support request to a database
-  // For demonstration, we'll just log it and respond with a success message
-  console.log('Support request submitted:', {
-      issueType,
-      description,
-      name,
-      email,
-      phone,
-  });
+  try {
+      // Send support request data to the API endpoint
+      const response = await axios.post(
+          `${API_BASE}/api/support-request`, 
+          {
+              issueType,
+              description,
+              name,
+              email,
+              phone
+          }
+      );
 
-  // Respond with a success message
-  res.json({ message: 'Support request submitted successfully!' });
+      // Return the API response back to the client
+      res.status(response.status).json(response.data);
+  } catch (error) {
+      if (error.response) {
+          // Error from the API
+          res.status(error.response.status).json(error.response.data);
+      } else {
+          // General server error
+          res.status(500).json({ error: 'Internal Server Error' });
+      }
+  }
 });
 
 module.exports = router;

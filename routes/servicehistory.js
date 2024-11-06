@@ -4,12 +4,12 @@ const axios = require('axios');
 
 // Route to render the service history page
 router.get('/', function(req, res) {
-  const clientId = req.user.id; // Assumes user authentication is set up and provides client ID
+  const clientId = req.user.id; 
   res.render('servicehistory', { title: 'Current Services & Service History', clientId });
 });
 
 // API route to get current services for a specific client
-router.get('/api/current-services/:clientId', async function(req, res) {
+router.get('/api/servicehistory/:clientId', async function(req, res) {
   const clientId = req.params.clientId;
 
   try {

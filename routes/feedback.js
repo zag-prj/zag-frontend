@@ -8,19 +8,35 @@ router.get('/', function(req, res, next) {
 
 // Handle feedback submissions
 router.post('/api/feedback', async (req, res) => {
-  const { serviceRating, comments, name, email } = req.body;
+  const { serviceRating, comments, name, email, clientId } = req.body;
 
-  // Here, you would typically save the feedback to a database
-  // For demonstration, we'll just log it and respond with a success message
-  console.log('Feedback submitted:', {
-      serviceRating,
-      comments,
-      name,
-      email,
-  });
+  // Validate that the necessary fields are present
+  if (!serviceRating || !comments || !clientId) {
+    return res.status(400).send({ message: 'Service rating, comments, and client ID are required.' });
+  }
 
-  // Respond with a success message
-  res.json({ message: 'Feedback submitted successfully!' });
+  // Construct the data to send to the /api/contact endpoint
+  const feedbackData = {
+    clientId: clientId,
+    name: name || '', 
+    surname: '', 
+    phoneNumber: '', 
+    email: email || '' 
+  };
+
+  try {
+    // Send the feedback data to the /api/contact endpoint
+    const response = await axios.post('http://localhost:8080/api/contact', feedbackData);
+    
+    // Log the feedback data
+    console.log('Feedback submitted:', response.data);
+
+    // Send success response
+    res.status(200).send({ message: 'Feedback submitted successfully!' });
+  } catch (error) {
+    console.error('Error submitting feedback:', error);
+    res.status(500).send({ message: 'Failed to submit feedback. Please try again later.' });
+  }
 });
 
 module.exports = router;

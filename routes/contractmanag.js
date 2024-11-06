@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const axios = require('axios'); // Make sure you have axios installed
+const axios = require('axios'); 
 
 // Route to render the contract management page
 router.get('/', function(req, res, next) {
